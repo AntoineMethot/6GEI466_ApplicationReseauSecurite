@@ -29,7 +29,7 @@ def accueil():
 @app.route("/static/<name>", methods=["GET"])
 def static_html(name):
     filename = f"{name}.html"
-    return send_from_directory("static", filename)
+    return send_from_directory("static/pages", filename)
 
 # Gestion des erreurs 404
 @app.errorhandler(404)
