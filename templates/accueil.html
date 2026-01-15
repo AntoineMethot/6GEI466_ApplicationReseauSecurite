@@ -19,9 +19,11 @@
         <input type="submit" value="Envoyer">
     </form>
     {% else %}
+    <a href="/">changer mon identité</a>
     <p>Bonjour {{ nom }} de {{ ville }}, bienvenue sur notre site!</p>
     {% endif %}
-    <img src="./static/images/chatAvecDents.jpg" alt="Beau chat">
+
+    <img src="./static/images/chatAvecDents.jpg" style="width: 200px;" alt="Beau chat">
 </body>
 
 </html>
