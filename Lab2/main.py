@@ -46,4 +46,4 @@ def validate_content(s: str) -> str:
     return s
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=8000, ssl_context='adhoc')
