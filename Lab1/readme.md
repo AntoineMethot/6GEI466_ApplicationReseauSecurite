@@ -12,7 +12,7 @@ Il est également possible d’utiliser l’extension Python de Visual Studio Co
 Dans tous les cas, un environnement virtuel doit être configuré et les dépendances doivent être installées à partir du fichier `requirements.txt` à l’aide de la commande : `pip install -r requirements.txt`
 
 ## Accès au serveur
-Le serveur a été précisé à fonctionner sur le port 8000. Pour y acceder, dans le navigateur il faut inscrire localhost:8000
+Le serveur a été précisé à fonctionner sur le port 8000. Pour y acceder, dans le navigateur il faut inscrire https://localhost:8000 ou https://127.0.0.1:8000 puisque c'est https. Puisque l'application même a crée le certificat, le navigateur avertira que le certificat peut être dangereux.
 
 
 ## Routes
@@ -48,7 +48,7 @@ Le chemin de la route demandée est capté et transmis au gabarit afin d’être
 
 ## Sécurité
 
-Avec la lib `pyopenssl`, il est possible de générer des certificats ssl et utiliser le protocole https.
+Avec la lib `pyopenssl`, il est possible de générer des certificats ssl et utiliser le protocole https. Puisque l'application même a crée le certificat, le navigateur avertira que le certificat peut être dangereux.
 
 Par défaut, Jinja2 applique un échappement HTML automatique lors de l’affichage de variables à l’aide de la syntaxe `{{ }}`, ce qui constitue un premier niveau de protection contre les injections de code. L'ajout de `| e` dans `{{ }}` est redondant, mais démontre explicitement l'échappement HTML.
 
