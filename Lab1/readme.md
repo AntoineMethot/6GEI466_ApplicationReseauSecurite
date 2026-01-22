@@ -17,16 +17,30 @@ Le serveur a été précisé à fonctionner sur le port 8000. Pour y acceder, da
 
 ## Routes
 ### /static/*
-La route `/static/*` permet de retourner un fichier HTML statique dont le nom correspond à `*`.  
-Une route explicite a été créée afin de respecter le comportement demandé dans l’énoncé.  
-La fonction `send_from_directory()` de Flask est utilisée pour retourner les fichiers HTML statiques, ce qui constitue une solution appropriée pour ce type de contenu.  
-Cette route accepte uniquement la méthode GET.
+La route `/static/*` permet de retourner un fichier HTML statique dont le nom correspond à `*`.
+
+**Implémentation initiale :** J'avais d'abord créé une fonction manuelle pour retourner les fichiers :
+
+```python
+# Retourne la page correspondante dans static/pages
+@app.route("/static/<name>", methods=["GET"])
+def static_html(name):
+    filename = f"{name}.html"
+    # send_from_directory() is standard for static html
+    return send_from_directory("static/pages", filename)
+```
+
+Mes fichiers statiques étaient initialement organisés dans `/static/pages/`. Cependant, j'ai réalisé que Flask gère automatiquement les fichiers dans le répertoire `static` sans nécessiter une route explicite. J'ai donc supprimé la fonction manuelle et déplacé mes fichiers HTML directement dans `/static/` pour se conformer aux exigences du laboratoire :
+
+> Les appels dont l'adresse commence par /static/* devront retourner le fichier correspondant dans le répertoire static sur le disque
+
+Flask fournit cette fonctionnalité par défaut, ce qui rend la route explicite inutile. Les fichiers HTML statiques sont maintenant servis directement par Flask.
 
 Actuellement, deux fichiers statiques sont disponibles :
 - `helloworld1.html`
 - `helloworld2.html`
 
-Ils peuvent être récupérés à l’aide des routes :  /static/helloworldx
+Ils peuvent être récupérés à l'aide des routes :  /static/helloworld1.html et /static/helloworld2.html
 
 ### /acceuil
 
