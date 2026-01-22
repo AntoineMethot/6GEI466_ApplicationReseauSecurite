@@ -1,25 +1,26 @@
 from flask import Flask
-from flask import render_template, request, abort
+from flask import render_template, request, abort, jsonify
 from utils import *
 
 app = Flask(__name__)
 
-# Route principale avec GET and POST
-@app.route("/", methods=["GET", "POST"])
+# Route principale avec GET
+@app.route("/", methods=["GET"])
 def accueil():
-    # Return loaded form
-    if request.method == "POST":
-        prenom = validate_content(request.form.get("prenom", ""))
-        nom = validate_content(request.form.get("nom", ""))
-        date = validate_date(request.form.get("date", ""))
-        return render_template("accueil.html", soumis=True, prenom=prenom, nom=nom, date=date)
+    return render_template("accueil.html")
 
-    #Return empty form
-    return render_template("accueil.html", soumis=False)
 
-@app.route("/horoscope")
+# Horoscope route - handles AJAX POST request
+@app.route("/horoscope", methods=["POST"])
 def horoscope():
-    return render_template("horoscope.html")
+    prenom = validate_content(request.form.get("prenom", ""))
+    nom = validate_content(request.form.get("nom", ""))
+    date = validate_date(request.form.get("date", ""))
+    
+    # Generate horoscope response
+    horoscope_text = f"<p>Bonjour {prenom} {nom}, voici votre horoscope pour le {date}!</p>"
+    
+    return horoscope_text
 
 # Gestion des erreurs 404
 @app.errorhandler(404)
