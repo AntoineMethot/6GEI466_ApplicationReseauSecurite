@@ -16,15 +16,6 @@ def accueil():
 
     return render_template("accueil.html", titre=titre, soumis=False)
 
-
-# Retourne la page correspondante dans static/pages
-@app.route("/static/<name>", methods=["GET"])
-def static_html(name):
-    filename = f"{name}.html"
-    # send_from_directory() is standard for static html
-    return send_from_directory("static/pages", filename)
-
-
 # Gestion des erreurs 404
 @app.errorhandler(404)
 def page_not_found(error):
