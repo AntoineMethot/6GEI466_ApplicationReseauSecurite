@@ -17,10 +17,25 @@ def horoscope():
     nom = validate_content(request.form.get("nom", ""))
     date = validate_date(request.form.get("date", ""))
     
-    # Generate horoscope response
-    horoscope_text = f"<p>Bonjour {prenom} {nom}, voici votre horoscope pour le {date}!</p>"
+    # Get zodiac sign from date
+    sign = get_zodiac_sign(date)
     
-    return horoscope_text
+    # Get horoscope data
+    horoscope_data = HOROSCOPES.get(sign, {})
+    horoscope_text = horoscope_data.get("text", "Horoscope non disponible")
+    image = horoscope_data.get("image", "")
+    
+    # Generate HTML response
+    html_response = f"""
+    <h2>Bienvenue {prenom} {nom}!</h2>
+    <p>Votre signe: <strong>{sign}</strong></p>
+    <img src="./static/images/{image}" alt="{sign}" style="width: 150px; margin: 20px 0;">
+    <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+        {horoscope_text}
+    </div>
+    """
+    
+    return html_response
 
 # Gestion des erreurs 404
 @app.errorhandler(404)

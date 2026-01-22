@@ -12,9 +12,10 @@
 </head>
 
 <body class="text-center">
-    <h1 class="mt-4 mb-4">HOROSCOPE</h1>
 
-    <form id="horoscope-form" method="POST" class="w-50 mx-auto">
+        <h1 class="mt-4 mb-4">HOROSCOPE</h1>
+
+        <form id="horoscope-form" method="POST" class="w-50 mx-auto">
 
             <label for="prenom" class="form-label">Prénom</label>
             <input type="text" class="form-control mb-4" id="prenom" name="prenom" required>
@@ -26,15 +27,18 @@
             <label for="datepicker" class="form-label">Date</label>
             <input type="text" class="form-control mb-4" id="datepicker" name="date" required>
 
-        <button type="submit" class="btn btn-primary">Voir mon horoscope</button>
+            <button type="submit" class="btn btn-primary">Voir mon horoscope</button>
 
-    </form>
+        </form>
 
-    <div id="horoscope-result" style="display:none;"></div>
+        <div id="horoscope-result" style="display:none;"></div>
 
-    <a id="change-identity" href="/" style="display:none;"class="btn btn-primary mb-4 mt-4">Changer mon identité</a>
-    
-    <img src="./static/images/SIGNS.jpg" alt="Signes">
+        <div id="change-identity" style="display:none;">
+            <a href="/" class="btn btn-primary mt-4">Changer mon identité</a>
+        </div>
+
+        <img src="./static/images/SIGNS.jpg" alt="Signes">
+    </div>
 </body>
 
 </html>
