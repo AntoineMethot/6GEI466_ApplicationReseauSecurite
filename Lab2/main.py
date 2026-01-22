@@ -7,17 +7,19 @@ app = Flask(__name__)
 # Route principale avec GET and POST
 @app.route("/", methods=["GET", "POST"])
 def accueil():
-    titre = "Page d’accueil"
-
     # Return loaded form
     if request.method == "POST":
         prenom = validate_content(request.form.get("prenom", ""))
         nom = validate_content(request.form.get("nom", ""))
         date = validate_date(request.form.get("date", ""))
-        return render_template("accueil.html", titre=titre, soumis=True, prenom=prenom, nom=nom, date=date)
+        return render_template("accueil.html", soumis=True, prenom=prenom, nom=nom, date=date)
 
     #Return empty form
-    return render_template("accueil.html", titre=titre, soumis=False)
+    return render_template("accueil.html", soumis=False)
+
+@app.route("/horoscope")
+def horoscope():
+    return render_template("horoscope.html")
 
 # Gestion des erreurs 404
 @app.errorhandler(404)
