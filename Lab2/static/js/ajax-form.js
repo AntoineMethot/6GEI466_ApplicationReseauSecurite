@@ -1,10 +1,9 @@
 $(function () {
-    // AJAX for horoscope form. Execute on form submit
     $("#horoscope-form").on("submit", function (e) {
-        //Stop form from submitting normally
+        //Intercepter le POST
         e.preventDefault();
 
-        // Get form data
+        // Get data
         var prenom = $("#prenom").val();
         var nom = $("#nom").val();
         var date = $("#datepicker").val();
@@ -19,11 +18,11 @@ $(function () {
                 date: date
             },
             success: function (response) {
-                // Hide form
+                // Cache form
                 $("#horoscope-form").hide();
-                // Show horoscope result
+                // SShow result
                 $("#horoscope-result").html(response).show();
-                // Show change identity link
+                // Show change identity
                 $("#change-identity").show();
             }
         });
