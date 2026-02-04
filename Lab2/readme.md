@@ -88,6 +88,8 @@ Lors de la soumission :
 - le DOM est modifié dynamiquement afin d’afficher l’horoscope,
 - le formulaire est masqué et un bouton permet de revenir à l’état initial.
 
+La page d'acceuil contient des composantes cachées et AJAX les rends visible à l'aide de `$("#id").show();`, tel que le div contenant l'horoscope. Ceci est la manipulation du DOM.
+
 ## Gestion des erreurs404
 Flask fournit des mécanismes intégrés pour la gestion des erreurs HTTP.  
 La fonction `app.errorhandler(404)` est utilisée afin d’intercepter les erreurs 404 et de retourner le gabarit `erreur404.html`.
