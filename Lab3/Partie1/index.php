@@ -50,13 +50,6 @@ if ($method === "POST" && $path === "/horoscope") {
 
     $sign = zodiac_sign_from_date($d);
 
-    if (!isset($HOROSCOPES[$sign])) {
-        http_response_code(500);
-        header("Content-Type: text/plain; charset=utf-8");
-        echo "Horoscope not found";
-        exit;
-    }
-
     http_response_code(200);
     header("Content-Type: application/json; charset=utf-8");
     echo json_encode([
